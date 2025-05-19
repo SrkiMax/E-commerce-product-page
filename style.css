@@ -72,16 +72,118 @@
 
 body {
     font-family: "Kumbh Sans", sans-serif;
-    padding: 2rem 4rem;
+    padding: 1rem 4rem;
+
 }
 
-.navbar {}
+/* .navbar {
+    position: relative;
+    height: 100px;
+    margin-bottom: 0;
+
+
+
+} */
+
+/*Navbar*/
+
+.navbar {
+    background-color: white;
+    border-bottom: 1px solid #eaeaea;
+
+
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem 2rem;
+
+    width: 100%;
+    margin: 0 auto;
+    gap: clamp(0.5rem, 2vw, 5rem);
+
+}
+
+
+
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-toggle {
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
+.menu-toggle img {
+    width: 20px;
+    height: 20px;
+}
+
+.logo {
+    height: 24px;
+}
+
+.nav-links {
+    display: flex;
+    gap: clamp(0.5rem, 1.5vw, 2.5rem);
+
+
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--Grey-500);
+    font-weight: 500;
+    transition: color 0.3s;
+
+
+}
+
+.nav-links a:hover {
+    color: orange;
+    border-bottom: 4px solid var(--Orange-300);
+
+}
+
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cart-icon {
+    height: 20px;
+}
+
+.avatar-icon {
+    height: 50px;
+
+}
+
+
+
+
+hr {
+    margin-top: 0;
+}
+
 
 
 main {
     display: flex;
     gap: clamp(32px, 5vw, 148px);
     max-width: 100%;
+    padding-top: 4rem !important;
 
 }
 
@@ -188,6 +290,10 @@ main {
     border-radius: 10px;
 }
 
+.quantity {
+    font-weight: 700;
+}
+
 .add-to-cart {
     width: 272px;
     display: flex;
@@ -211,7 +317,7 @@ main {
 
     .container,
     main {
-        padding: 0 0rem;
+        padding: 1 0rem !important;
     }
 
     .product {
@@ -256,6 +362,8 @@ main {
 
 @media (max-width: 1000px) {
 
+
+
     .small-images img {
         max-width: 70px !important;
 
@@ -279,17 +387,47 @@ main {
 
 
 
+@media (max-width: 865px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 2rem;
+        gap: 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+}
+
+
+
+
+
+
 
 @media (max-width: 800px) {
 
     .container {
-        padding: 1rem 0;
+        padding: 1rem 0 !important;
     }
 
     main {
         flex-direction: column;
         gap: 14px;
-        padding: 1rem;
+        padding: 1rem !important;
 
     }
 
@@ -338,9 +476,33 @@ main {
     }
 
 
+    /* Container for custom arrows */
+
+    .custom-arrow-wrapper {
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Arrow image inside the circle */
+
+    .custom-arrow-wrapper img {
+        width: 10px !important;
+        height: 19px !important;
+    }
+
+
+
 
 
 }
+
+
+
 
 
 
@@ -357,9 +519,9 @@ main {
     }
 
 
-    .navbar {
+    /* .navbar {
         margin-bottom: 0;
-    }
+    } */
 
     hr {
         display: none;
