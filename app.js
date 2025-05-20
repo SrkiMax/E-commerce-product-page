@@ -1,4 +1,10 @@
 
+const overlay = document.querySelector(".overlay");
+const mainImage = document.querySelector(".main-image");
+
+const bigPicture = document.querySelector(".big-picture");
+const thumbnailWrappers = document.querySelectorAll(".thumbnail-wrapper");
+const thumbnails = document.querySelectorAll(".thumbnail");
 
 const minusBtn = document.getElementById("minus");
 const quantity = document.querySelector(".quantity");
@@ -20,7 +26,42 @@ minusBtn.addEventListener("click", () => {
 });
 
 
-
+// Mobile menu
 menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('show');
 });
+
+
+
+const resetThumbnailsStyle = () => {
+    thumbnails.forEach((thumbnail) => {
+        thumbnail.style.opacity = "1";
+        thumbnail.classList.remove("selected");
+    });
+
+    thumbnailWrappers.forEach((wrapper) => {
+        wrapper.classList.remove("selected");
+    });
+};
+
+
+thumbnails.forEach((thumbnail) => {
+    thumbnail.addEventListener("click", () => {
+        bigPicture.setAttribute('src', thumbnail.src);
+
+        resetThumbnailsStyle();
+        thumbnail.style.opacity = "0.3";
+
+        thumbnail.classList.add("selected");
+
+        thumbnail.parentElement.classList.add("selected");
+
+
+    });
+});
+
+
+
+mainImage.addEventListener("click", () => {
+    overlay.style.display = "block";
+})
