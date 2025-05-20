@@ -337,7 +337,7 @@ main {
     top: 0;
     left: 0;
     z-index: 10;
-    display: none;
+    //display: none;
     /* Keep hidden by default */
 
 }
@@ -372,7 +372,9 @@ main {
 
 }
 
-.carousel-indicators .lightbox-thumbnail {}
+.carousel-indicators .lightbox-thumbnail {
+    background: none !important;
+}
 
 .lightbox-thumbnail img {
     border-radius: 0.5rem;
