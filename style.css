@@ -76,14 +76,7 @@ body {
 
 }
 
-/* .navbar {
-    position: relative;
-    height: 100px;
-    margin-bottom: 0;
 
-
-
-} */
 
 /*Navbar*/
 
@@ -107,13 +100,20 @@ body {
 
 }
 
+.logo-and-links {
+    display: flex;
+    gap: clamp(0.5rem, 4vw, 5rem);
+
+}
 
 
 .left-section {
     display: flex;
     align-items: center;
+    justify-content: left;
     gap: 1rem;
 }
+
 
 .menu-toggle {
 
@@ -144,13 +144,11 @@ body {
     color: var(--Grey-500);
     font-weight: 500;
     transition: color 0.3s;
-
-
 }
 
 .nav-links a:hover {
     color: orange;
-    border-bottom: 4px solid var(--Orange-300);
+    /* border-bottom: 4px solid var(--Orange-300); */
 
 }
 
@@ -221,6 +219,25 @@ main {
 
     border-radius: 15px;
 }
+
+.thumbnail-wrapper {
+    cursor: pointer;
+    border: 3px solid transparent;
+    box-sizing: border-box;
+
+}
+
+.thumbnail-wrapper.selected {
+    border: 3px solid var(--Orange-500);
+    border-radius: 18px;
+}
+
+.first-thumbnail {
+    opacity: 0.3;
+}
+
+
+
 
 
 .info-card {
@@ -310,6 +327,60 @@ main {
     margin-bottom: auto;
 }
 
+/* Overlay  */
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+    /* Keep hidden by default */
+
+}
+
+/* Lightbox carousel customizing */
+
+
+#lightbox-carousel {
+    width: 40%;
+    display: flex;
+    justify-self: center;
+    margin-top: 10rem;
+    border-radius: 15px;
+}
+
+
+.carousel-inner {
+    border-radius: 15px;
+}
+
+.lightbox-thumb-indicators button.lightbox-thumbnail {
+    width: 88px;
+
+}
+
+
+
+.lightbox-thumb-indicators {
+    /* Indicators already have position set to absolute, and this sets them just under the main picture */
+    top: 103%;
+    gap: 15px;
+
+}
+
+.carousel-indicators .lightbox-thumbnail {}
+
+.lightbox-thumbnail img {
+    border-radius: 0.5rem;
+
+}
+
+
+
 
 
 
@@ -398,13 +469,13 @@ main {
         left: 0;
         width: 100%;
         background: white;
-        display: none;
         flex-direction: column;
         align-items: flex-start;
         padding: 1rem 2rem;
         gap: 1rem;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         z-index: 10;
+        display: none;
     }
 
     .nav-links.show {
