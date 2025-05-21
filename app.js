@@ -1,6 +1,7 @@
 
 const overlay = document.querySelector(".overlay");
 const mainImage = document.querySelector(".main-image");
+const closeLightbox = document.querySelector(".close-lightbox");
 
 const bigPicture = document.querySelector(".big-picture");
 const thumbnailWrappers = document.querySelectorAll(".thumbnail-wrapper");
@@ -63,5 +64,10 @@ thumbnails.forEach((thumbnail) => {
 
 
 mainImage.addEventListener("click", () => {
-    overlay.style.display = "block";
+    overlay.style.display = "flex";
+})
+
+
+closeLightbox.addEventListener("click", () => {
+    overlay.style.display = "none";
 })
