@@ -337,7 +337,9 @@ main {
     top: 0;
     left: 0;
     z-index: 10;
-    //display: none;
+    justify-content: center !important;
+    align-items: center !important;
+    display: none;
     /* Keep hidden by default */
 
 }
@@ -347,10 +349,6 @@ main {
 
 #lightbox-carousel {
     width: 40%;
-    display: flex;
-    justify-self: center;
-    margin-top: 10rem;
-    border-radius: 15px;
 }
 
 
@@ -381,8 +379,46 @@ main {
 
 }
 
+.lightbox-image-wrapper {
+    position: relative;
+}
 
 
+.close-lightbox {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -40px;
+    right: 0px;
+    z-index: 20;
+
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.close-lightbox:hover {
+    transform: scale(1.1);
+}
+
+
+.close-lightbox img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+    /* brightness(0) makes the image black
+invert(1) flips black to white */
+}
+
+
+@media (max-width: 1250px) {
+    #lightbox-carousel {
+        width: 52%;
+    }
+}
 
 
 
@@ -504,6 +540,9 @@ main {
 
     }
 
+    .overlay {
+        display: none !important;
+    }
 
     .tablet-display {
         display: block;
@@ -637,429 +676,3 @@ main {
     }
 
 }
-
-
-
-
-
-/*Ovo je kod koji radi, samo pokusavam da napravim da se slike i info skupljaju, a da ne predju u column dok se ne pojavi tablet Carousel*/
-
-/*
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* border: 1px solid black; */
-/*  }
-*/
-/*
-:root {
-
-    --Grey-950: #1D2026;
-    --Grey-500: #69707D;
-    --Grey-300: #C3CAD9;
-    --Grey-100: #E4E9F2;
-    --Grey-50: #F6F8FD;
-
-    --Orange-500: #FF7E1B;
-    --Orange-300: #FFAB6A;
-}
-
-
-.text-preset1-bold {
-    font-size: 44px;
-    line-height: 48px;
-    letter-spacing: 0px;
-    font-weight: 700;
-}
-
-.text-preset2-bold {
-    font-size: 28px;
-    line-height: 32px;
-    letter-spacing: 0px;
-    font-weight: 700;
-}
-
-.text-preset3-bold {
-    font-size: 16px;
-    line-height: 26px;
-    letter-spacing: 0px;
-    font-weight: 700;
-}
-
-.text-preset3-regular {
-    font-size: 16px;
-    line-height: 26px;
-    letter-spacing: 0px;
-    font-weight: 400;
-}
-
-.text-preset4-regular {
-    font-size: 15px;
-    line-height: 26px;
-    letter-spacing: 0px;
-    font-weight: 400;
-}
-
-.text-preset5-bold {
-    font-size: 13px;
-    line-height: 16px;
-    letter-spacing: 2px;
-    font-weight: 700;
-}
-
-.text-preset6-bold {
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: 1.85px;
-    font-weight: 700;
-}
-
-
-
-
-body {
-    font-family: "Kumbh Sans", sans-serif;
-    padding: 2rem 4rem;
-}
-
-.navbar {}
-
-
-main {
-    display: flex;
-    gap: clamp(32px, 5vw, 148px);
-    max-width: 100%;
-
-}
-
-.product {
-    display: flex;
-    flex-direction: column;
-    gap: 33px;
-}
-
-.tablet-display {
-    display: none;
-}
-
-
-.main-image {
-    display: flex;
-}
-
-.main-image img {
-    max-width: 448px;
-
-    border-radius: 15px;
-
-}
-
-
-.small-images {
-    display: flex;
-    width: 448px;
-    justify-content: space-between;
-}
-
-.small-images img {
-    width: 88px;
-
-    border-radius: 15px;
-}
-
-
-.info-card {
-    padding-top: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 60px;
-}
-
-.info-card .title {
-    color: var(--Grey-500);
-}
-
-.info-text {
-    margin: 32px auto;
-}
-
-.price-section {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 32px;
-}
-
-.price {
-    display: flex;
-    gap: 16px;
-}
-
-.discount {
-    background-color: var(--Grey-950);
-    display: inline-block;
-    color: white;
-    font-size: 16px;
-    width: 51px;
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-
-
-}
-
-.last-price {
-    text-decoration: line-through;
-    color: var(--Grey-500);
-    color: var(--Grey-500);
-
-
-}
-
-
-.quantity-and-add-div {
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.quantity-box {
-    width: 157px;
-    background-color: var(--Grey-50);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 56px;
-    border-radius: 10px;
-}
-
-.add-to-cart {
-    width: 272px;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--Orange-500);
-    border-radius: 10px;
-
-}
-
-.add-to-cart p {
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-
-
-
-@media (max-width: 1050px) {
-
-    main {
-        flex-direction: column;
-        gap: 14px;
-        padding: 1rem;
-
-    }
-
-
-    .product {
-        display: flex;
-
-    }
-
-    .main-image {
-        display: flex;
-    }
-
-    .main-image img {
-        max-width: 50%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .small-images {
-        display: flex;
-        max-width: 50%;
-        margin: 0 auto;
-    }
-
-    .small-images img {
-        max-width: 85px;
-
-        border-radius: 15px;
-    }
-
-    .info-card h1 {
-        margin-bottom: 0px;
-    }
-
-    .info-card .info-text {
-        margin-top: 10px;
-    }
-
-    .price-section {
-        margin-top: -14px;
-        margin-bottom: 20px;
-    }
-
-
-
-
-
-    .add-to-cart,
-    .quantity-box {
-        width: 100%;
-    }
-
-}
-
-
-@media (max-width: 1000px) {
-
-    .small-images img {
-        max-width: 82px;
-
-        border-radius: 15px;
-    }
-
-    .product {
-        gap: 15px;
-    }
-
-    .info-card {
-        padding-top: 1rem;
-    }
-
-}
-
-
-
-@media (max-width: 900px) {
-
-    .small-images img {
-        max-width: 77px;
-
-        border-radius: 15px;
-    }
-
-}
-
-
-
-
-@media (max-width: 800px) {
-
-    .container {
-        padding: 1rem 0;
-    }
-
-
-    .tablet-display {
-        display: block;
-    }
-
-    .product {
-        display: none;
-    }
-
-
-    .info-card {
-        padding-top: 2rem;
-    }
-
-    /*Customize the height of carousel*/
-
-/*
-
-    #tabletCarousel {
-        aspect-ratio: 16 / 9;
-        width: 100%;
-    }
-
-    #tabletCarousel .carousel-inner,
-    #tabletCarousel .carousel-item,
-    #tabletCarousel img {
-        height: 100%;
-    }
-
-    #tabletCarousel img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top center;
-        border-radius: 10px;
-    }
-
-    #tabletCarousel .carousel-item .first-image {
-        object-position: center center;
-    }
-
-
-
-
-}
-
-
-
-@media (max-width: 530px) {
-
-    body {
-
-        padding: 1rem 0;
-    }
-
-    .container {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-
-    .navbar {
-        margin-bottom: 0;
-    }
-
-    hr {
-        display: none;
-    }
-
-    #tabletCarousel img {
-        border-radius: 0px;
-    }
-
-
-    main {}
-
-    .product {}
-
-    .info-card {
-        padding: 0 1rem;
-    }
-
-    .info-card .title {
-        font-size: 12px;
-        line-height: 15px;
-        letter-spacing: 1.85px;
-
-    }
-
-    .info-card h1 {
-        font-size: 28px;
-        line-height: 32px;
-        letter-spacing: 0px;
-        font-weight: 700;
-    }
-
-    .quantity-and-add-div {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-    }
-
-}
-
-*/
