@@ -17,16 +17,7 @@
   <link rel="stylesheet" href="bootstrap-5.3.5-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-    }
 
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
 </head>
 
 
@@ -34,6 +25,7 @@
 
   <!-- Overlay that dims the background -->
   <div class="overlay">
+
 
     <!-- Lightbox carousel -->
 
@@ -95,7 +87,7 @@
       <div class="logo-and-links">
         <div class="left-section">
           <button class="menu-toggle" id="menuToggle">
-            <img src="images/icon-menu.svg" alt="Menu">
+            <img src="images/icon-menu.svg" alt="Menu Icon" id="menuIcon">
           </button>
           <img src="images/logo.svg" alt="Logo" class="logo">
         </div>
@@ -114,9 +106,22 @@
       <div class="right-section">
         <a href="#"><img src="images/icon-cart.svg" alt="Cart" class="cart-icon"></a>
         <a href="#"><img src="images/image-avatar.png" alt="Avatar" class="avatar-icon"></a>
+        <div class="cart-dropdown">
+          <h4 class="text-preset3-bold">Cart</h4>
+          <hr>
+          <div class="cart-content">
+            <p class="text-preset3-bold">Your cart is empty</p>
+            <!-- <button type="button" class="btn btn-warning checkoutBtn">Checkout</button> -->
+          </div>
+        </div>
       </div>
     </div>
   </header>
+
+
+
+
+
 
 
 
@@ -236,28 +241,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
 
   <script src="bootstrap-5.3.5-dist/js/bootstrap.min.js"></script>
   <script src="app.js"></script>
