@@ -332,13 +332,13 @@ main {
 
 .thumbnail-wrapper {
     cursor: pointer;
-    border: 3px solid transparent;
+    border: 2px solid transparent;
     box-sizing: border-box;
 
 }
 
 .thumbnail-wrapper.selected {
-    border: 3px solid var(--Orange-500);
+    border: 2px solid var(--Orange-500);
     border-radius: 18px;
 }
 
