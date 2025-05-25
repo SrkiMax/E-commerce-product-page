@@ -171,6 +171,25 @@ body {
 
 }
 
+.cart-and-badge {
+    position: relative;
+}
+
+.badge {
+    width: 19px;
+    height: 13px;
+    background-color: var(--Orange-500) !important;
+    color: white !important;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 1px;
+    left: 11px;
+    display: none;
+
+}
+
 .avatar-icon {
     height: 50px;
 
@@ -524,6 +543,7 @@ main {
 
 .close-lightbox:hover {
     transform: scale(1.1);
+
 }
 
 
@@ -643,6 +663,11 @@ invert(1) flips black to white */
     .nav-links.show {
         display: flex;
     }
+
+    body {
+        padding: 1rem 2rem;
+    }
+
 }
 
 
@@ -747,7 +772,6 @@ invert(1) flips black to white */
 @media (max-width: 530px) {
 
     body {
-
         padding: 1rem 0;
     }
 
