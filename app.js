@@ -17,19 +17,21 @@ const menuIcon = document.getElementById("menuIcon");
 const navLinks = document.getElementById('navLinks');
 
 const cartIcon = document.querySelector(".cart-icon");
+const cartBadge = document.querySelector(".badge");
 const cartDropdown = document.querySelector(".cart-dropdown");
 const cartContent = document.querySelector(".cart-content");
 
 
 
+const qty = parseInt(quantity.textContent);
 
 plusBtn.addEventListener("click", () => {
-    let currentDigit = parseInt(quantity.textContent);
+    let currentDigit = qty;
     quantity.textContent = currentDigit + 1;
 });
 
 minusBtn.addEventListener("click", () => {
-    let currentDigit = parseInt(quantity.textContent);
+    let currentDigit = qty;
     if (currentDigit > 0) {
         quantity.textContent = currentDigit - 1;
     }
@@ -67,6 +69,7 @@ addToCartBtn.addEventListener("click", () => {
 
     if (parseInt(quantity.textContent) === 0) {
         cartContent.innerHTML = '<p class="empty-cart-text">Your cart is empty</p>';
+
     } else {
         cartContent.innerHTML =
             `<div class="ordered-div">
@@ -84,11 +87,13 @@ addToCartBtn.addEventListener("click", () => {
     </div>
   </div>
   <button type="button" class="btn btn-warning checkoutBtn">Checkout</button>`;
+        cartBadge.textContent = qty;
+        cartBadge.style.display = "flex";
 
         const deleteIcon = document.querySelector(".delete-icon img");
 
         deleteIcon.addEventListener("click", () => {
-            /*Give the delete icon some delay so it doesn't delete itself from the DOM, since deleteIcon is also part of cart dropdown */
+            /*Give the delete icon some delay, let the click event resolve before updating the DOM, so it doesn't delete itself from the DOM, and close the cart dropdown.*/
             setTimeout(() => {
                 emptyCart();
                 resetQuantity();
@@ -101,6 +106,8 @@ addToCartBtn.addEventListener("click", () => {
 
 const resetQuantity = () => {
     quantity.textContent = 0;
+    cartBadge.textContent = 0;
+    cartBadge.style.display = "none";
 }
 
 
