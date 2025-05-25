@@ -23,17 +23,16 @@ const cartContent = document.querySelector(".cart-content");
 
 
 
-const qty = parseInt(quantity.textContent);
 
 plusBtn.addEventListener("click", () => {
-    let currentDigit = qty;
-    quantity.textContent = currentDigit + 1;
+    const qty = parseInt(quantity.textContent);
+    quantity.textContent = qty + 1;
 });
 
 minusBtn.addEventListener("click", () => {
-    let currentDigit = qty;
-    if (currentDigit > 0) {
-        quantity.textContent = currentDigit - 1;
+    const qty = parseInt(quantity.textContent);
+    if (qty > 0) {
+        quantity.textContent = qty - 1;
     }
 });
 
@@ -67,7 +66,8 @@ const item = {
 
 addToCartBtn.addEventListener("click", () => {
 
-    if (parseInt(quantity.textContent) === 0) {
+    const qty = parseInt(quantity.textContent);
+    if (qty === 0) {
         cartContent.innerHTML = '<p class="empty-cart-text">Your cart is empty</p>';
 
     } else {
@@ -77,8 +77,8 @@ addToCartBtn.addEventListener("click", () => {
     <div class="ordered-text">
       <p class="item-name">${item.name}</p>
       <div class="cart-calculation">
-        <p>$${item.price} x ${parseInt(quantity.textContent)}</p>
-        <span> $${item.price * parseInt(quantity.textContent)}</span>
+        <p>$${item.price} x ${qty}</p>
+        <span> $${item.price * qty}</span>
 
       </div>
     </div>
