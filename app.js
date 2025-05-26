@@ -71,28 +71,64 @@ addToCartBtn.addEventListener("click", () => {
         cartContent.innerHTML = '<p class="empty-cart-text">Your cart is empty</p>';
 
     } else {
-        cartContent.innerHTML =
-            `<div class="ordered-div">
-    <img src="${item.thumbnail}" class="" alt="...">
-    <div class="ordered-text">
-      <p class="item-name">${item.name}</p>
-      <div class="cart-calculation">
-        <p>$${item.price} x ${qty}</p>
-        <span> $${item.price * qty}</span>
+        // Clear existing cart content        
+        cartContent.innerHTML = "";
 
-      </div>
-    </div>
-    <div class="delete-icon">
-      <img src="images/icon-delete.svg" alt="">
-    </div>
-  </div>
-  <button type="button" class="btn btn-warning checkoutBtn">Checkout</button>`;
+        // Create parent div
+        const orderedDiv = document.createElement("div");
+        orderedDiv.className = "ordered-div"
+
+        // Create image
+        const thumbImg = document.createElement("img");
+        thumbImg.src = item.thumbnail;
+        thumbImg.alt = item.name;
+
+        // Create text wrapper
+        const orderedText = document.createElement("div");
+        orderedText.className = "ordered-text";
+
+        const itemName = document.createElement("p");
+        itemName.className = "item-name";
+        itemName.textContent = item.name;
+
+        const cartCalc = document.createElement("div");
+        cartCalc.className = "cart-calculation";
+
+        const priceText = document.createElement("p");
+        priceText.textContent = `$${item.price} x ${qty}`;
+
+        const totalText = document.createElement("span");
+        totalText.textContent = `$${item.price * qty}`;
+
+        cartCalc.append(priceText, totalText);
+        orderedText.append(itemName, cartCalc);
+
+        // Delete icon
+        const deleteIconDiv = document.createElement("div");
+        deleteIconDiv.className = "delete-icon";
+
+        const deleteImg = document.createElement("img");
+        deleteImg.src = "images/icon-delete.svg";
+        deleteImg.alt = "Delete";
+
+        deleteIconDiv.appendChild(deleteImg);
+
+        // Final assembly
+        orderedDiv.append(thumbImg, orderedText, deleteIconDiv);
+        cartContent.appendChild(orderedDiv);
+
+        // Checkout button
+        const checkoutBtn = document.createElement("button");
+        checkoutBtn.className = "btn btn-warning checkoutBtn";
+        checkoutBtn.textContent = "Checkout";
+        cartContent.appendChild(checkoutBtn);
+
         cartBadge.textContent = qty;
         cartBadge.style.display = "flex";
 
-        const deleteIcon = document.querySelector(".delete-icon img");
 
-        deleteIcon.addEventListener("click", () => {
+        // Delete icon eventListener
+        deleteImg.addEventListener("click", () => {
             /*Give the delete icon some delay, let the click event resolve before updating the DOM, so it doesn't delete itself from the DOM, and close the cart dropdown.*/
             setTimeout(() => {
                 emptyCart();
