@@ -43,7 +43,7 @@ minusBtn.addEventListener("click", () => {
 // Cart dropdown
 
 cartIcon.addEventListener("click", () => {
-    cartDropdown.style.display = cartDropdown.style.display === "block" ? "none" : "block";
+    cartDropdown.classList.toggle("show");
 });
 
 // Hide the cart when clicking outside
@@ -52,7 +52,7 @@ document.addEventListener("click", (event) => {
     const isClickOnIcon = cartIcon.contains(event.target);
 
     if (!isClickInsideCart && !isClickOnIcon) {
-        cartDropdown.style.display = "none";
+        cartDropdown.classList.remove("show");
     }
 });
 
@@ -167,6 +167,12 @@ menuToggle.addEventListener('click', () => {
     }
 });
 
+mainImage.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+        overlay.style.display = "flex";
+        e.preventDefault(); // Prevents page scroll on space
+    }
+});
 
 
 const resetThumbnailsStyle = () => {
@@ -196,16 +202,95 @@ thumbnails.forEach((thumbnail) => {
     });
 });
 
+// Adding keyboard functionality for thumbnails under main product picture
+thumbnails.forEach((thumbnail) => {
+    thumbnail.parentElement.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            thumbnail.click();
+            e.preventDefault();
+        }
+    });
+});
 
 
-mainImage.addEventListener("click", () => {
-    overlay.style.display = "flex";
-})
+
 
 
 closeLightbox.addEventListener("click", () => {
     overlay.style.display = "none";
-})
+});
+
+closeLightbox.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+        overlay.style.display = "none";
+        e.preventDefault();
+    }
+});
+
+
+// Close the lightbox using ESC button
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.style.display === "flex") {
+        overlay.style.display = "none";
+    }
+
+});
+
+
+// Trap focus
+
+function trapFocus(container) {
+    const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const focusableEls = container.querySelectorAll(focusableSelectors);
+    const firstEl = focusableEls[0];
+    const lastEl = focusableEls[focusableEls.length - 1];
+
+    container.addEventListener('keydown', function (e) {
+        if (e.key !== 'Tab') return;
+
+        if (e.shiftKey) {
+            if (document.activeElement === firstEl) {
+                e.preventDefault();
+                lastEl.focus();
+            }
+        } else {
+            if (document.activeElement === lastEl) {
+                e.preventDefault();
+                firstEl.focus();
+            }
+        }
+    });
+
+    firstEl?.focus(); // Focus first item
+}
 
 
 
+const prevBtn = document.querySelector('.carousel-control-prev');
+const nextBtn = document.querySelector('.carousel-control-next');
+
+[prevBtn, nextBtn].forEach(btn => {
+    btn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            btn.click();
+            e.preventDefault();
+        }
+    });
+});
+
+
+// Trap focus in the lightbox
+// This declares a variable named lastFocusedElement in the outer scope, which will be used to remember which element was focused before the lightbox (overlay) was opened.
+let lastFocusedElement;
+
+mainImage.addEventListener("click", () => {
+    lastFocusedElement = document.activeElement;
+    overlay.style.display = "flex";
+    trapFocus(overlay);
+});
+
+closeLightbox.addEventListener("click", () => {
+    overlay.style.display = "none";
+    //  This code below returns keyboard focus to the element that was focused before the lightbox opened
+    lastFocusedElement?.focus();
+});
