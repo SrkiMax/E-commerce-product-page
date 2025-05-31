@@ -72,7 +72,7 @@
 
 body {
     font-family: "Kumbh Sans", sans-serif;
-    padding: 1rem 8rem;
+    padding: 1rem 4rem;
 
 }
 
@@ -237,6 +237,7 @@ body {
 .cart-dropdown hr {
     width: 100%;
     color: var(--Grey-500);
+    margin-bottom: 0;
 }
 
 .cart-content {
@@ -282,7 +283,7 @@ body {
 
 .cart-calculation {
     display: flex;
-    gap: 16px;
+    gap: 8px;
 }
 
 .cart-calculation span {
@@ -316,7 +317,7 @@ body {
 
 
 
-hr {
+.under-nav-line {
     margin-top: 0;
 }
 
@@ -826,7 +827,9 @@ invert(1) flips black to white */
     .cart-dropdown {
         width: 300px;
         display: flex;
+        flex-direction: column;
         margin: 0 auto !important;
+        padding-bottom: 0;
 
     }
 
@@ -834,7 +837,7 @@ invert(1) flips black to white */
         font-size: 10px;
     }
 
-    hr {
+    .under-nav-line {
         display: none;
     }
 
@@ -853,9 +856,7 @@ invert(1) flips black to white */
     }
 
 
-    main {}
 
-    .product {}
 
     .info-card {
         padding: 0 1rem;
