@@ -874,12 +874,21 @@ invert(1) flips black to white */
         line-height: 32px !important;
     }
 
+    .price-section {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+
     .quantity-and-add-div {
         display: flex;
         flex-wrap: wrap;
         gap: 16px;
     }
 
+    .add-to-cart {
+        height: 56px;
+    }
 
 
 }
