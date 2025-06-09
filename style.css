@@ -506,7 +506,7 @@ button:focus {
 
 .overlay {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 
     background-color: rgba(0, 0, 0, 0.75);
     position: fixed;
@@ -519,7 +519,7 @@ button:focus {
     /* Alow the overlay to be scrolable */
     display: none;
     /* Keep hidden by default */
-
+    padding-top: 3rem;
 
 
 
